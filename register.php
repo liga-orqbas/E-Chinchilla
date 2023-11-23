@@ -4,13 +4,24 @@ require './includes/form_handlers/register_handler.php';
 require './includes/form_handlers/login_handler.php';
 ?>
 
-<html>
+<!DOCTYPE html>
     <head>
         <title>Welcome to E-Chinchilla!</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+
+        <link rel="stylesheet" type="text/css" href="./assets/css/register_style.css">
     </head>
     <body>
-
-        <form action="register.php" method="POST">
+        <div class="container">
+        <div class="login-container">
+            <div class="header">
+                <span class="main-text">E-Chinchilla</span>
+                <span class="additional-text">For all your chinchilla needs</span>
+            </div>
+        <form class="login-form" action="register.php" method="POST">
             <input type="email" name="log_email" placeholder="Email Adress" value="<?php if(isset($_SESSION['log_email'])) {
                 echo $_SESSION['log_email'];
             }?>" required>
@@ -23,7 +34,7 @@ require './includes/form_handlers/login_handler.php';
 
         </form>
 
-        <form action="register.php" method="post">
+        <form class="login-form" action="register.php" method="post">
             <input type="text" name="reg_fname" placeholder="First name" value="<?php if(isset($_SESSION['reg_fname'])) {
                 echo $_SESSION['reg_fname'];
             }?>" required>
@@ -80,5 +91,8 @@ require './includes/form_handlers/login_handler.php';
             echo "<span> You're all set! Time to log into E-chinchilla! </span><br>";
             ?>
         </form>
+        </div>
+
+        </div>
     </body>
 </html>
