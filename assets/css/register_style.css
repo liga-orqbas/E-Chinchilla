@@ -12,6 +12,11 @@ HEADERS BASE: #f0f0f0
 HEADERS SECONDARY: #f5f5f5
 MAIN TEXT: #ffffff
 
+HOVER AND ACTIVE colors::after
+HOVER BASE: #DED0B6
+ACTIVE BASE: #BBAB8C
+ACTIVE BACKGROUND COLOR: #FAEED1
+
 */
 
 
@@ -27,11 +32,23 @@ body {
     font-size: 16px;
     line-height: 1.7;
 
-    background-image: linear-gradient(to right bottom, rgba(83, 104, 114, 0.8), rgba(54, 69, 79, 0.8)), url(../images/login_form/background.jpg);
+    background: linear-gradient(to right bottom, rgba(83, 104, 114, 0.8), rgba(54, 69, 79, 0.8)), url(../images/login_form/background.jpg);
     background-size: cover;
     background-position: right;
     position: relative;
 }
+
+.github {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    width: 48px;
+    height: 48px;
+}
+
+
+
+/** desktop **/
 
 .container {
     display: grid;
@@ -40,10 +57,18 @@ body {
     width: 35%;
     height: 100vh;
 
-    clip-path: polygon(0 0, 100% 5%, 100% 95%, 0  100%);
     background-color: #6e7f80;
     padding: 30px;
 
+    background: rgba(110, 127, 128, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+@media screen and (min-width: 1080px) {
+    .container{
+        clip-path: polygon(0 0, 85% 5%, 100% 15%, 100% 85%, 85% 95%, 0 100%);
+    }
 }
 
 .header {
@@ -81,6 +106,18 @@ body {
     border: none; /* Remove the border */
     border-radius: 25px; /* Add rounded corners */
 
+    /* From https://css.glass */
+    background: rgba(192, 192, 192, 0.3);
+    box-shadow: 0 4px 30px rgba(192, 192, 192, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(192, 192, 192, 0.4);
+
+}
+
+.login-form:active, .login-form:hover {
+    background: rgba(192, 192, 192, 0.32);
+    box-shadow: 0 4px 30px rgba(192, 192, 192, 0.6);
 }
 
 input[type="text"], input[type="password"], input[type="email"]  {
@@ -97,6 +134,16 @@ input[type="text"], input[type="password"], input[type="email"]  {
     color: #757575;
 }
 
+input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover {
+    border: 2px solid #DED0B6;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    outline: none;
+    background-color: #FAEED1;
+    border: 2px solid #BBAB8C;
+}
+
 input[type="submit"] {
     width: 100px; /* Adjust the width as needed */
     padding: 7px;
@@ -108,7 +155,88 @@ input[type="submit"] {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.7;
-    color: #757575;
     color: #ffffff; /* Text color */
     cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #4E7575;
+}
+
+input[type="submit"]:active {
+    background-color: #3C5B5B;
+}
+
+.login-form a {
+    text-decoration: none;
+    color: #FAEED1;
+}
+
+.login-form a:hover {
+    text-decoration: none;
+    color: #DED0B6;
+}
+
+.login-form a:active {
+    text-decoration: none;
+    color: #BBAB8C;
+}
+
+#second {
+    display: none;
+}
+
+.error {
+    display: block;
+    background-color: #FFA733;
+    border: 1px solid #9E3623;
+    border-radius: 5px;
+    padding: 5px;
+    color: #ffffff;
+
+}
+
+
+/** Tablet and mobile **/
+@media screen and (max-width: 975px) {
+
+    body {
+        display: grid;
+        place-items: center;
+    }
+
+    .container{
+
+        width: 55%;
+    }
+
+    .main-text{
+        font-size: 36px;
+    }
+
+    .additional-text{
+        font-size: 9.3px;
+    }
+
+}
+
+/** Clean mobile ajustment **/
+@media screen and (max-width: 600px) {
+
+    .container{
+        width: 75%;
+    }
+
+    .main-text{
+        font-size: 32px;
+    }
+
+    .additional-text{
+        font-size: 7.5px;
+    }
+
+    .github{
+        left: 45%;
+        bottom: 3%;
+    }
 }
